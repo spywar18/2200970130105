@@ -13,11 +13,9 @@ interface ShortUrlResult {
   shortLink: string;
   expiry: string;
 }
-
 const initialInputs: UrlInput[] = Array.from({ length: 5 }, () => ({
   url: "",
 }));
-
 const UrlForm: React.FC = () => {
   const [inputs, setInputs] = useState<UrlInput[]>(initialInputs);
   const [results, setResults] = useState<ShortUrlResult[]>([]);
@@ -31,13 +29,11 @@ const UrlForm: React.FC = () => {
       return false;
     }
   };
-
   const handleChange = (idx: number, field: keyof UrlInput, value: string) => {
     const newInputs = [...inputs];
     newInputs[idx][field] = value;
     setInputs(newInputs);
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
