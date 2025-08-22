@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import fetch from "node-fetch";
 
-// Allowed values for stack, level, and package are enforced by the calling code
 const LOG_API_URL = "http://20.244.56.144/evaluation-service/logs";
 
 export async function Log(
@@ -16,7 +15,7 @@ export async function Log(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ stack, level, package: pkg, message }),
     });
-    // Optionally handle response if needed
+    
     return await res.json();
   } catch (err) {
     // Fallback: log to console if logging service fails
@@ -24,7 +23,7 @@ export async function Log(
   }
 }
 
-// TODO: Implement custom logging logic as per requirements
+
 export function loggingMiddleware(
   req: Request,
   res: Response,
